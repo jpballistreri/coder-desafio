@@ -31,17 +31,19 @@ router.get('/productos/listar', (req, res) => {
 
 
 router.get('/productos/listar/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-
-    if (arrayProductos.length==0){
-        return res.status(400).json({
-                error: 'No hay productos cargados.',
-        })
-    }    
+    const idBuscado = parseInt(req.params.id);
     
-    if (arrayProductos[id-1]){
+    if (arrayProductos.length==0){
+      return res.status(400).json({
+              error: 'No hay productos cargados.',
+      })
+    }
+    
+    let productoEncontrado = arrayProductos.filter((aProduct) => aProduct.id == idBuscado);
+    
+    if (productoEncontrado.length==1){
         res.json(
-            arrayProductos[id-1],
+            productoEncontrado,
           );
     }
     else{

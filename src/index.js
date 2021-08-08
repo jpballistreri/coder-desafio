@@ -16,7 +16,7 @@ server.on('error', (err) => {
 //const publicPath = path.resolve(__dirname, './public');
 //app.use(express.static(publicPath));
 
-// Home
+//Home
 app.get('/', (request, response) => {
   response.sendFile('/public/index.html',{ root: '.' });
 });
